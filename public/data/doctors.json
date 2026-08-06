@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "Dr. John Smith",
+    "specialty": "Cardiology",
+    "hospital": "City General Hospital",
+    "location": "Lagos",
+    "gender": "Male",
+    "experience": 15,
+    "rating": 4.8,
+    "available": true,
+    "image": "/images/doctors/doctor1.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Dr. Sarah Johnson",
+    "specialty": "Pediatrics",
+    "hospital": "Sunrise Medical Center",
+    "location": "Abuja",
+    "gender": "Female",
+    "experience": 10,
+    "rating": 4.7,
+    "available": true,
+    "image": "/images/doctors/doctor2.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Dr. Michael Brown",
+    "specialty": "Orthopedics",
+    "hospital": "Hope Hospital",
+    "location": "Port Harcourt",
+    "gender": "Male",
+    "experience": 12,
+    "rating": 4.6,
+    "available": false,
+    "image": "/images/doctors/doctor3.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Dr. Emily Wilson",
+    "specialty": "Dermatology",
+    "hospital": "Care Clinic",
+    "location": "Uyo",
+    "gender": "Female",
+    "experience": 8,
+    "rating": 4.9,
+    "available": true,
+    "image": "/images/doctors/doctor4.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Dr. David Miller",
+    "specialty": "Neurology",
+    "hospital": "Mercy Hospital",
+    "location": "Calabar",
+    "gender": "Male",
+    "experience": 18,
+    "rating": 4.9,
+    "available": true,
+    "image": "/images/doctors/doctor5.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Dr. Grace Thomas",
+    "specialty": "General Medicine",
+    "hospital": "LifeCare Hospital",
+    "location": "Enugu",
+    "gender": "Female",
+    "experience": 9,
+    "rating": 4.5,
+    "available": true,
+    "image": "/images/doctors/doctor6.jpg"
+  }
+]

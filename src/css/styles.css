@@ -109,6 +109,79 @@ body {
     margin:15px 0;
 }
 
+/* Doctor Search */
+
+#doctorSearch {
+    display:block;
+    width:60%;
+    margin:30px auto;
+    padding:14px;
+    font-size:1rem;
+    border-radius:10px;
+    border:1px solid #ccc;
+}
+
+#doctorContainer {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:25px;
+    padding:40px;
+}
+
+.doctor-card {
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:var(--shadow);
+    text-align:center;
+}
+
+.doctor-card img {
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    object-fit:cover;
+    margin-bottom:15px;
+}
+
+.book-btn {
+    margin-top:20px;
+    padding:12px 20px;
+    background:#1976D2;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.available {
+    color:green;
+    font-weight:bold;
+}
+
+.unavailable {
+    color:red;
+    font-weight:bold;
+}
+
+.no-results {
+    text-align:center;
+    font-size:1.2rem;
+    padding:40px;
+}
+
+.doctor-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.doctor-page h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #37474F;
+}
+
 /* Footer */
 footer {
     background:#1976D2;
