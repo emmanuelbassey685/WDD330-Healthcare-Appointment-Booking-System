@@ -92,7 +92,7 @@
    Doctor Grid
 =========================== */
 
-.doctor-grid {
+.card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2rem;
@@ -185,4 +185,20 @@
 .btn-secondary:hover {
   background: #1976D2;
   color: white;
+}
+
+.footer {
+    margin-top: 4rem;
+    padding: 2rem;
+    text-align: center;
+    background: #1976D2;
+    color: white;
+}
+
+.footer-content p {
+    margin: .5rem 0;
+}
+
+.main-content {
+    min-height: calc(100vh - 180px);
 }

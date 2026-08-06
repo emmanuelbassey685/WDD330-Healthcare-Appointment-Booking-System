@@ -14,6 +14,7 @@ import doctorCardTemplate from "../components/DoctorCard.js";
 import searchBarTemplate from "../components/SearchBar.js";
 import emptyStateTemplate from "../components/EmptyState.js";
 import spinnerTemplate from "../components/Spinner.js";
+import Layout from "../components/Layout.js";
 
 let doctors = [];
 
@@ -23,8 +24,9 @@ let doctors = [];
 export async function initDoctorSearch() {
   const app = document.querySelector("#app");
 
-  app.innerHTML = `
-    <main class="doctor-page">
+  app.innerHTML = Layout(`
+
+  <section class="doctor-page">
 
       <h1>Find a Doctor</h1>
 
@@ -34,11 +36,12 @@ export async function initDoctorSearch() {
       )}
 
       <section id="doctorResults">
-        ${spinnerTemplate("Loading doctors...")}
+          ${spinnerTemplate("Loading doctors...")}
       </section>
 
-    </main>
-  `;
+  </section>
+
+  `);
 
   await loadDoctors();
 
@@ -87,9 +90,9 @@ function renderDoctors(doctorList) {
   }
 
   results.innerHTML = `
-    <div class="doctor-grid">
-      ${doctorList.map(doctorCardTemplate).join("")}
-    </div>
+      <div class="card-grid">
+        ${doctorList.map(doctorCardTemplate).join("")}
+      </div>
   `;
 }
 

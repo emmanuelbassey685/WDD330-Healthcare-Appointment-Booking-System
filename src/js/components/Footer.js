@@ -1,17 +1,33 @@
-export default function Footer(){
+/**
+ * --------------------------------------------------------
+ * File: Footer.js
+ * Description:
+ * Reusable footer component.
+ *
+ * Author: Emmanuel Bassey
+ * Course: WDD330 - Web Frontend Development II
+ * --------------------------------------------------------
+ */
 
-return `
+export default function Footer() {
+  const year = new Date().getFullYear();
 
-<footer>
+  return `
+    <footer class="footer">
 
-<p>
+      <div class="footer-content">
 
-© 2026 Healthcare Appointment Booking System | (WDD330-Final Project)
+        <p>
+          &copy; ${year} Healthcare Appointment Booking System
+        </p>
 
-</p>
+        <p>
+          Developed by Emmanuel Bassey |
+          WDD330 - Web Frontend Development II
+        </p>
 
-</footer>
+      </div>
 
-`;
-
+    </footer>
+  `;
 }

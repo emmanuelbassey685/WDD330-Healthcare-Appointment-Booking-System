@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "name": "City General Hospital",
+    "city": "Lagos",
+    "address": "12 Marina Road, Lagos",
+    "specialty": "Cardiology",
+    "rating": 4.8,
+    "phone": "+2348011111111",
+    "services": [
+      "Emergency",
+      "Laboratory",
+      "Radiology"
+    ],
+    "image": "/images/hospitals/hospital1.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Sunrise Medical Center",
+    "city": "Abuja",
+    "address": "45 Independence Avenue, Abuja",
+    "specialty": "Pediatrics",
+    "rating": 4.7,
+    "phone": "+2348022222222",
+    "services": [
+      "Emergency",
+      "Pediatrics",
+      "Laboratory"
+    ],
+    "image": "/images/hospitals/hospital2.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Hope Hospital",
+    "city": "Port Harcourt",
+    "address": "18 Aba Road, Port Harcourt",
+    "specialty": "Orthopedics",
+    "rating": 4.6,
+    "phone": "+2348033333333",
+    "services": [
+      "Orthopedics",
+      "Physiotherapy",
+      "Emergency"
+    ],
+    "image": "/images/hospitals/hospital3.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Royal Care Hospital",
+    "city": "Uyo",
+    "address": "22 Wellington Bassey Way, Uyo",
+    "specialty": "General Medicine",
+    "rating": 4.5,
+    "phone": "+2348044444444",
+    "services": [
+      "General Practice",
+      "Pharmacy",
+      "Laboratory"
+    ],
+    "image": "/images/hospitals/hospital4.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Healing Touch Clinic",
+    "city": "Calabar",
+    "address": "9 Marian Road, Calabar",
+    "specialty": "Dermatology",
+    "rating": 4.4,
+    "phone": "+2348055555555",
+    "services": [
+      "Dermatology",
+      "Laboratory",
+      "Pharmacy"
+    ],
+    "image": "/images/hospitals/hospital5.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Evergreen Specialist Hospital",
+    "city": "Enugu",
+    "address": "31 Ogui Road, Enugu",
+    "specialty": "Neurology",
+    "rating": 4.9,
+    "phone": "+2348066666666",
+    "services": [
+      "Neurology",
+      "MRI",
+      "Emergency"
+    ],
+    "image": "/images/hospitals/hospital6.jpg"
+  }
+]
