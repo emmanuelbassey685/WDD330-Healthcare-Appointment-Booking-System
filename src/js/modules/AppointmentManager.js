@@ -9,7 +9,8 @@
  * --------------------------------------------------------
  */
 
-import { getAppointments, saveAppointment, deleteAppointment, updateAppointment } from "../services/AppointmentService.js";
+import { getAppointments, getAppointmentById, saveAppointment, deleteAppointment, 
+  updateAppointment } from "../services/AppointmentService.js";
 
 /**
  * Return all appointments.
@@ -42,6 +43,15 @@ export function removeAppointment(id) {
  * @param {string} id
  * @param {Object} updatedAppointment
  */
-export function editAppointment(id, updatedAppointment) {
-  updateAppointment(id, updatedAppointment);
+export function editAppointment(updatedAppointment) {
+  updateAppointment(updatedAppointment);
+}
+
+/**
+ * Return one appointment.
+ *
+ * @param {string} id
+ */
+export function loadAppointment(id) {
+  return getAppointmentById(id);
 }

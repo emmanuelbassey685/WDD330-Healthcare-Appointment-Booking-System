@@ -8,7 +8,6 @@
  * Course: WDD330 - Web Frontend Development II
  * --------------------------------------------------------
  */
-
 import { load, save } from "../storage/LocalStorage.js";
 import { generateId } from "../utils/Utils.js";
 
@@ -79,5 +78,19 @@ export function updateAppointment(id, updatedAppointment) {
   });
 
   save(STORAGE_KEY, appointments);
+
+}
+
+/**
+ * Get one appointment by ID.
+ *
+ * @param {string} id
+ * @returns {Object|undefined}
+ */
+export function getAppointmentById(id) {
+
+    return getAppointments().find(
+        appointment => appointment.id === id
+    );
 
 }
