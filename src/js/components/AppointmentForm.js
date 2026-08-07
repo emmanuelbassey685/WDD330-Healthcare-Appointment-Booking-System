@@ -10,17 +10,17 @@
  */
 export default function appointmentFormTemplate() {
   return `
-    <section class="appointment-page">
 
-      <h1>Book an Appointment</h1>
+    <form id="appointmentForm" class="appointment-form">
 
-      <form id="appointmentForm" class="appointment-form">
+      <div class="form-row">
 
         <div class="form-group">
           <label for="patientName">Full Name</label>
           <input
             type="text"
             id="patientName"
+            placeholder="Enter your full name"
             required
           >
         </div>
@@ -30,52 +30,45 @@ export default function appointmentFormTemplate() {
           <input
             type="email"
             id="patientEmail"
+            placeholder="example@email.com"
             required
           >
         </div>
+
+      </div>
+
+      <div class="form-row">
 
         <div class="form-group">
           <label for="patientPhone">Phone Number</label>
           <input
             type="tel"
             id="patientPhone"
+            placeholder="+234..."
             required
           >
         </div>
 
         <div class="form-group">
           <label for="doctorSelect">Doctor</label>
-
-          <select
-            id="doctorSelect"
-            required
-          >
-            <option value="">
-              Select Doctor
-            </option>
+          <select id="doctorSelect" required>
+            <option value="">Select Doctor</option>
           </select>
-
         </div>
+
+      </div>
+
+      <div class="form-row">
+
         <div class="form-group">
-        
-          <label for="hospitalSelect">
-              Hospital
-          </label>
-          
+          <label for="hospitalSelect">Hospital</label>
           <select id="hospitalSelect" required>
-          
-              <option value="">
-                  Select Hospital
-              </option>
-              
+            <option value="">Select Hospital</option>
           </select>
         </div>
 
         <div class="form-group">
-          <label for="appointmentDate">
-            Appointment Date
-          </label>
-
+          <label for="appointmentDate">Appointment Date</label>
           <input
             type="date"
             id="appointmentDate"
@@ -83,11 +76,12 @@ export default function appointmentFormTemplate() {
           >
         </div>
 
-        <div class="form-group">
-          <label for="appointmentTime">
-            Appointment Time
-          </label>
+      </div>
 
+      <div class="form-row">
+
+        <div class="form-group">
+          <label for="appointmentTime">Appointment Time</label>
           <input
             type="time"
             id="appointmentTime"
@@ -96,26 +90,31 @@ export default function appointmentFormTemplate() {
         </div>
 
         <div class="form-group">
-          <label for="reason">
-            Reason for Visit
-          </label>
-
-          <textarea
-            id="reason"
-            rows="4"
-            required
-          ></textarea>
         </div>
 
-        <button
-          type="submit"
-          class="btn-primary"
-        >
-          Book Appointment
-        </button>
+      </div>
 
-      </form>
+      <div class="form-group">
 
-    </section>
+        <label for="reason">Reason for Visit</label>
+
+        <textarea
+          id="reason"
+          rows="5"
+          placeholder="Briefly describe your symptoms or reason for the appointment..."
+          required
+        ></textarea>
+
+      </div>
+
+      <button
+        type="submit"
+        class="btn-primary"
+      >
+        Book Appointment
+      </button>
+
+    </form>
+
   `;
 }

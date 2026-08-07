@@ -43,8 +43,8 @@ export function removeAppointment(id) {
  * @param {string} id
  * @param {Object} updatedAppointment
  */
-export function editAppointment(updatedAppointment) {
-  updateAppointment(updatedAppointment);
+export function editAppointment(id, updatedAppointment) {
+    updateAppointment(id, updatedAppointment);
 }
 
 /**

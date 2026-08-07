@@ -1,0 +1,159 @@
+/* ======================================================
+   Dashboard
+   Healthcare Appointment Booking System
+====================================================== */
+
+.dashboard {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+.dashboard h1 {
+    text-align: center;
+    color: var(--primary-dark);
+    margin-bottom: .5rem;
+}
+
+.dashboard-subtitle {
+    text-align: center;
+    color: var(--text-light);
+    margin-bottom: 3rem;
+}
+
+/* ======================================================
+   Appointment Grid
+====================================================== */
+#appointmentList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 2rem;
+}
+
+/* ======================================================
+   Appointment Card
+====================================================== */
+
+.appointment-card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border-left: 6px solid var(--primary);
+}
+
+.appointment-card:hover {
+    transform: translateY(-6px);
+}
+
+.appointment-card h2 {
+    color: var(--primary-dark);
+    margin-bottom: 1rem;
+}
+
+.appointment-card p {
+    margin-bottom: .7rem;
+}
+
+.appointment-card strong {
+    color: var(--text);
+}
+
+.appointment-card hr {
+    margin:1.2rem 0;
+    border:none;
+    border-top:1px solid var(--border);
+}
+
+/* ======================================================
+   Appointment Status
+====================================================== */
+
+.status-badge {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: .4rem 1rem;
+    background: #E3F2FD;
+    color: var(--primary);
+    border-radius: 50px;
+    font-weight: 700;
+}
+
+/* ======================================================
+   Buttons
+====================================================== */
+
+.card-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.edit-btn,
+.delete-btn {
+    flex: 1;
+    border: none;
+    padding: .85rem;
+    border-radius: 10px;
+    font-size: .95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.edit-btn {
+    background: var(--primary);
+    color: white;
+}
+
+.edit-btn:hover {
+    background: var(--primary-dark);
+}
+
+.delete-btn {
+    background: var(--danger);
+    color: white;
+}
+
+.delete-btn:hover {
+    opacity: .9;
+}
+
+/* ======================================================
+   Empty Dashboard
+====================================================== */
+
+.empty-dashboard {
+    text-align: center;
+    padding: 5rem 2rem;
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.empty-dashboard h2 {
+    margin-bottom: 1rem;
+}
+
+.empty-dashboard p {
+    margin-bottom: 2rem;
+}
+
+/* ======================================================
+   Responsive
+====================================================== */
+
+@media (max-width:768px){
+    .dashboard{
+        padding:1rem;
+    }
+
+    #appointmentList{
+        grid-template-columns:1fr;
+    }
+
+    .card-actions{
+        flex-direction:column;
+    }
+}

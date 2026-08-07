@@ -1,192 +1,333 @@
+/* ======================================================
+   Healthcare Appointment Booking System
+   Global Styles
+   Author: Emmanuel Bassey
+   Course: WDD330
+====================================================== */
+
 :root {
-    --primary:#1976D2;
-    --secondary:#26A69A;
-    --success:#43A047;
-    --background:#F5F7FA;
-    --white:#ffffff;
-    --text:#37474F;
-    --danger:#EF5350;
-    --shadow:0 5px 20px rgba(0,0,0,.08);
-    --radius:12px;
-    font-family:Roboto,sans-serif;
+
+    /* Brand Colors */
+    --primary: #1565C0;
+    --primary-light: #42A5F5;
+    --primary-dark: #0D47A1;
+
+    --secondary: #26A69A;
+    --secondary-dark: #00897B;
+
+    --success: #43A047;
+    --warning: #FB8C00;
+    --danger: #E53935;
+
+    /* Neutral Colors */
+    --background: #F4F8FB;
+    --surface: #FFFFFF;
+    --border: #E3EAF2;
+
+    --text: #263238;
+    --text-light: #607D8B;
+
+    /* UI */
+    --radius: 14px;
+    --shadow: 0 10px 30px rgba(0,0,0,.08);
+    --transition: .3s ease;
+
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
 }
 
-* {
+/* ==============================
+   Reset
+============================== */
+
+*{
     margin:0;
     padding:0;
     box-sizing:border-box;
+}
+
+html {
+    scroll-behavior:smooth;
 }
 
 body {
     background:var(--background);
     color:var(--text);
     font-family:Roboto,sans-serif;
+    line-height:1.6;
 }
 
-/* Navigation */
+/* ==============================
+   Global Layout
+============================== */
+
+main {
+    width:min(1200px,92%);
+    margin:auto;
+    padding:2rem 0;
+}
+
+section {
+    margin-bottom:4rem;
+}
+
+h1,h2,h3,h4 {
+    color:var(--primary-dark);
+    margin-bottom:1rem;
+}
+
+p {
+    color:var(--text-light);
+}
+
+img {
+    max-width:100%;
+    display:block;
+}
+
+/* ==============================
+   Navigation
+============================== */
+
+header {
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
 .navbar {
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:20px 10%;
-    background:#1976D2;
-    color:white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 8%;
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+    box-shadow: 0 4px 18px rgba(0,0,0,.08);
 }
 
 .logo {
-    font-size:1.5rem;
-    font-weight:bold;
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: white;
+    letter-spacing: .5px;
 }
 
 .nav-links {
-    display:flex;
-    gap:25px;
-    list-style:none;
+    display: flex;
+    gap: 2rem;
+    list-style: none;
 }
 
 .nav-links a {
-    text-decoration:none;
-    color:white;
-    font-weight:500;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: .25s;
+    position: relative;
 }
 
-/* Hero */
+.nav-links a:hover {
+    color: #E3F2FD;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: .3s;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* ==============================
+   Hero
+============================== */
+
 .hero {
-    text-align:center;
-    padding:80px 20px;
+    padding: 6rem 2rem;
+    text-align: center;
+    background: linear-gradient(
+        rgba(25,118,210,.92),
+        rgba(38,166,154,.88)
+    );
+    color: white;
 }
 
 .hero h1 {
-    font-size:3rem;
-    margin-bottom:20px;
+    font-size: clamp(2.5rem,5vw,4rem);
+    margin-bottom: 1rem;
 }
 
 .hero p {
-    font-size:1.1rem;
-    max-width:700px;
-    margin:auto;
-    margin-bottom:30px;
+    max-width: 700px;
+    margin: auto;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
 }
 
 .hero-buttons {
-    display:flex;
-    justify-content:center;
-    gap:20px;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
-.hero button {
-    padding:14px 28px;
+/* ==============================
+   Buttons
+============================== */
+
+button,
+.btn-primary,
+.btn-secondary {
+    cursor:pointer;
     border:none;
     border-radius:10px;
-    background:#1976D2;
+    padding:.9rem 1.5rem;
+    font-size:1rem;
+    transition:var(--transition);
+}
+
+.btn-primary {
+    background:var(--primary);
     color:white;
-    font-size:1rem;
-    cursor:pointer;
 }
 
-/* Cards */
-.cards {
+.btn-primary:hover {
+    background:var(--primary-dark);
+    transform:translateY(-2px);
+}
+
+.btn-secondary {
+    background:var(--secondary);
+    color:white;
+}
+
+.btn-secondary:hover {
+    background:var(--secondary-dark);
+}
+
+/* ==============================
+   Cards
+============================== */
+
+.cards,
+.card-grid,
+.doctor-grid {
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
-    padding:60px;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:2rem;
 }
 
-.card {
-    background:white;
-    padding:30px;
-    text-align:center;
-    border-radius:12px;
+.card,
+.doctor-card,
+.hospital-card {
+    background:var(--surface);
+    border-radius:var(--radius);
+    overflow:hidden;
     box-shadow:var(--shadow);
-    transition:.3s;
+    transition:var(--transition);
 }
 
-.card:hover {
-    transform:translateY(-8px);
+.card:hover,
+.doctor-card:hover,
+.hospital-card:hover {
+    transform:translateY(-6px);
 }
 
-.card h3 {
-    margin:15px 0;
+.doctor-content,
+.hospital-content {
+    padding:1.5rem;
 }
 
-/* Doctor Search */
-
-#doctorSearch {
-    display:block;
-    width:60%;
-    margin:30px auto;
-    padding:14px;
-    font-size:1rem;
-    border-radius:10px;
-    border:1px solid #ccc;
-}
-
-#doctorContainer {
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:25px;
-    padding:40px;
-}
-
-.doctor-card {
-    background:white;
-    padding:20px;
-    border-radius:12px;
-    box-shadow:var(--shadow);
-    text-align:center;
-}
-
-.doctor-card img {
-    width:120px;
-    height:120px;
-    border-radius:50%;
+.doctor-image,
+.hospital-image {
+    width:100%;
+    height:220px;
     object-fit:cover;
-    margin-bottom:15px;
 }
 
-.book-btn {
-    margin-top:20px;
-    padding:12px 20px;
-    background:#1976D2;
-    color:white;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
+/* ==============================
+   Search
+============================== */
+
+input,
+select,
+textarea {
+    width:100%;
+    padding:1rem;
+    border:1px solid var(--border);
+    border-radius:10px;
+    font-size:1rem;
+    transition:var(--transition);
 }
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline:none;
+    border-color:var(--primary);
+    box-shadow:0 0 0 4px rgba(21,101,192,.12);
+}
+
+/* ==============================
+   Status
+============================== */
 
 .available {
-    color:green;
+    color:var(--success);
     font-weight:bold;
 }
 
-.unavailable {
-    color:red;
+.busy {
+    color:var(--danger);
     font-weight:bold;
 }
 
-.no-results {
-    text-align:center;
-    font-size:1.2rem;
-    padding:40px;
-}
+/* ==============================
+   Footer
+============================== */
 
-.doctor-page {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-.doctor-page h1 {
-  text-align: center;
-  margin-bottom: 2rem;
-  color: #37474F;
-}
-
-/* Footer */
 footer {
-    background:#1976D2;
+    background:var(--primary-dark);
     color:white;
-    padding:25px;
     text-align:center;
-    margin-top:60px;
+    padding:2rem;
+    margin-top:5rem;
+}
+
+footer p {
+    color:white;
+}
+
+/* ==============================
+   Responsive
+============================== */
+
+@media (max-width:768px) {
+    .navbar{
+        flex-direction:column;
+        gap:1rem;
+    }
+
+    .nav-links{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:1rem;
+    }
+
+    .hero h1{
+        font-size:2.2rem;
+    }
 }

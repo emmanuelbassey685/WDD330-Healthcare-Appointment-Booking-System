@@ -20,40 +20,61 @@ export function initDashboard() {
   console.log("initDashboard running");
 
   const app = document.querySelector("#app");
-
+  const appointments = loadAppointments();
+  
   app.innerHTML = Layout(`
-    <section class="dashboard-page">
 
-      <h1>My Appointments</h1>
+    <section class="dashboard">
 
-      <div id="appointmentList"></div>
+        <h1>My Appointments</h1>
+
+        <p class="dashboard-subtitle">
+            Manage your scheduled healthcare appointments.
+        </p>
+
+        <div id="appointmentList"></div>
 
     </section>
-  `);
 
-  renderAppointments();
-  attachDeleteListeners();
-  attachEditListeners();
+    `);  
+    renderAppointments();
+    attachDeleteListeners();
+    attachEditListeners();
 }
 
 function renderAppointments() {
 
-  const list = document.querySelector("#appointmentList");
+    const list = document.querySelector("#appointmentList");
 
-  const appointments = loadAppointments();
+    const appointments = loadAppointments();
 
-  if (appointments.length === 0) {
+    if (appointments.length === 0) {
 
-    list.innerHTML = `
-      <p>No appointments booked yet.</p>
-    `;
+        list.innerHTML = `
 
-    return;
-  }
+            <div class="empty-dashboard">
 
-  list.innerHTML = appointments
-    .map(appointmentCardTemplate)
-    .join("");
+                <h2>No Appointments Yet</h2>
+
+                <p>Book your first appointment to get started.</p>
+
+                <a href="/pages/appointments.html"
+                   class="btn-primary">
+
+                    Book Appointment
+
+                </a>
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+    list.innerHTML = appointments
+        .map(appointmentCardTemplate)
+        .join("");
 
 }
 

@@ -4,34 +4,39 @@ return `
 
 <section class="hero">
 
-<h1>
+    <div class="hero-content">
 
-Healthcare Appointment Booking System
+        <h1>
+            Quality Healthcare,
+            <br>
+            One Click Away
+        </h1>
 
-</h1>
+        <p>
+            Book appointments with trusted doctors,
+            discover hospitals,
+            and manage your healthcare online.
+        </p>
 
-<p>
+        <div class="hero-buttons">
 
-Book appointments with trusted healthcare professionals
-quickly and conveniently.
+            <a
+                href="/pages/appointments.html"
+                class="btn-primary"
+            >
+                Book Appointment
+            </a>
 
-</p>
+            <a
+                href="/pages/doctors.html"
+                class="btn-secondary"
+            >
+                Find Doctors
+            </a>
 
-<div class="hero-buttons">
+        </div>
 
-<button>
-
-Book Appointment
-
-</button>
-
-<button>
-
-Find Doctor
-
-</button>
-
-</div>
+    </div>
 
 </section>
 

@@ -66,7 +66,7 @@ export function updateAppointment(id, updatedAppointment) {
 
   const appointments = getAppointments().map((appointment) => {
 
-    if (appointment.id === id) {
+    if (String(appointment.id) === String(id)) {
       return {
         ...appointment,
         ...updatedAppointment

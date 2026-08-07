@@ -1,0 +1,163 @@
+/* ======================================================
+   FORMS
+   Healthcare Appointment Booking System
+====================================================== */
+
+/* ==============================
+   Form Container
+============================== */
+
+.appointment-form {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+/* ==============================
+   Form Grid
+============================== */
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+}
+
+/* ==============================
+   Labels
+============================== */
+
+.form-group label {
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: .5rem;
+}
+
+/* ==============================
+   Inputs
+============================== */
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: inherit;
+    background: white;
+    transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(21,101,192,.15);
+}
+
+/* ==============================
+   Textarea
+============================== */
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+
+/* ==============================
+   Placeholder
+============================== */
+
+::placeholder {
+    color: #90A4AE;
+}
+
+/* ==============================
+   Submit Button
+============================== */
+
+.appointment-form button {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 1rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.appointment-form button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.appointment-form button:active {
+    transform: scale(.98);
+}
+
+/* ==============================
+   Validation
+============================== */
+
+input:invalid,
+select:invalid,
+textarea:invalid {
+    border-color: #EF9A9A;
+}
+
+input:valid,
+select:valid,
+textarea:valid {
+    border-color: #A5D6A7;
+}
+
+/* ==============================
+   Disabled Fields
+============================== */
+
+input:disabled,
+select:disabled,
+textarea:disabled {
+    background: #ECEFF1;
+    cursor: not-allowed;
+}
+
+/* ==============================
+   Form Heading
+============================== */
+
+.appointment-form h2 {
+    text-align: center;
+    color: var(--primary-dark);
+    margin-bottom: 2rem;
+}
+
+/* ==============================
+   Responsive
+============================== */
+
+@media (max-width: 768px) {
+    .appointment-form {
+        padding: 1.5rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
