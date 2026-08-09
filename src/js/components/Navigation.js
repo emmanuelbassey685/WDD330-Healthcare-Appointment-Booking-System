@@ -1,5 +1,5 @@
 /**
- * --------------------------------------------------------
+ * ---------------------------------------------------------
  * File: Navigation.js
  * Description:
  * Reusable navigation component for the Healthcare
@@ -7,49 +7,78 @@
  *
  * Author: Emmanuel Bassey
  * Course: WDD330 - Web Frontend Development II
- * --------------------------------------------------------
+ * ---------------------------------------------------------
  */
 
 export default function Navigation() {
-  return `
-    <header>
 
-      <nav class="navbar">
+    return `
 
-        <div class="logo">
-          🏥 Healthcare Booking
-        </div>
+        <header>
 
-        <ul class="nav-links">
+            <nav class="navbar">
 
-          <li>
-            <a href="/index.html">Home</a>
-          </li>
+                <a
+                    href="/index.html"
+                    class="logo"
+                    aria-label="Healthcare Booking Home"
+                >
+                    🏥 Healthcare Booking
+                </a>
 
-          <li>
-            <a href="/pages/doctors.html">Doctors</a>
-          </li>
+                <button
+                    class="menu-toggle"
+                    id="menuToggle"
+                    type="button"
+                    aria-label="Open navigation menu"
+                    aria-expanded="false"
+                >
+                    ☰
+                </button>
 
-          <li>
-            <a href="/pages/hospitals.html">Hospitals</a>
-          </li>
+                <ul class="nav-links" id="navLinks">
 
-          <li>
-            <a href="/pages/appointments.html">Appointments</a>
-          </li>
+                    <li>
+                        <a href="/index.html">
+                            Home
+                        </a>
+                    </li>
 
-          <li>
-            <a href="/pages/pharmacy.html">Pharmacy</a>
-          </li>
+                    <li>
+                        <a href="/pages/doctors.html">
+                            Doctors
+                        </a>
+                    </li>
 
-          <li>
-            <a href="/pages/dashboard.html">Dashboard</a>
-          </li>
+                    <li>
+                        <a href="/pages/hospitals.html">
+                            Hospitals
+                        </a>
+                    </li>
 
-        </ul>
+                    <li>
+                        <a href="/pages/appointments.html">
+                            Appointments
+                        </a>
+                    </li>
 
-      </nav>
+                    <li>
+                        <a href="/pages/dashboard.html">
+                            Dashboard
+                        </a>
+                    </li>
 
-    </header>
-  `;
+                    <li>
+                        <a href="/pages/pharmacy.html">
+                            Pharmacy
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+        </header>
+
+    `;
 }

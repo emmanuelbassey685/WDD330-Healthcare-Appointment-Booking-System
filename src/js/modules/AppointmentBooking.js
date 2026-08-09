@@ -13,6 +13,7 @@ import appointmentFormTemplate from "../components/AppointmentForm.js";
 import { getDoctors } from "../services/FHIRService.js";
 import { getHospitals } from "../services/HospitalService.js";
 import { createAppointment, editAppointment, loadAppointment } from "./AppointmentManager.js";
+import { showToast } from "../components/Toast.js";
 
 const editingId = localStorage.getItem("editingAppointment");
 
@@ -105,18 +106,23 @@ function saveAppointmentForm(event) {
 
         localStorage.removeItem("editingAppointment");
 
-        alert("Appointment updated successfully!");
+        sessionStorage.setItem(
+            "toastMessage",
+            "Appointment updated successfully!"
+        );
 
     } else {
 
         createAppointment(appointment);
 
-        alert("Appointment booked successfully!");
+        sessionStorage.setItem(
+            "toastMessage",
+            "Appointment booked successfully!"
+        );
 
     }
 
     window.location.href = "/pages/dashboard.html";
-
 }
 
 function attachFormListener() {

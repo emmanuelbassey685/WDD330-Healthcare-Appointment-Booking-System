@@ -9,7 +9,9 @@ export default defineConfig({
         doctors: resolve(__dirname, "pages/doctors.html"),
         hospitals: resolve(__dirname, "pages/hospitals.html"),
         appointments: resolve(__dirname, "pages/appointments.html"),
-        dashboard: resolve(__dirname, "pages/dashboard.html")
+        dashboard: resolve(__dirname, "pages/dashboard.html"),
+        pharmacy: resolve(__dirname, "pages/pharmacy.html"),
+        medicalHistory: resolve(__dirname, "pages/medical-history.html")
       }
     }
   }

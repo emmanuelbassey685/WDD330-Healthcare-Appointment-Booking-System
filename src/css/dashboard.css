@@ -1,7 +1,7 @@
 /* ======================================================
    Dashboard
    Healthcare Appointment Booking System
-====================================================== */
+   ====================================================== */
 
 .dashboard {
     max-width: 1200px;
@@ -11,49 +11,59 @@
 
 .dashboard h1 {
     text-align: center;
-    color: var(--primary-dark);
-    margin-bottom: .5rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    font-size: 2.4rem;
 }
 
 .dashboard-subtitle {
     text-align: center;
-    color: var(--text-light);
+    color: #607D8B;
     margin-bottom: 3rem;
+    font-size: 1.05rem;
 }
+
 
 /* ======================================================
    Appointment Grid
-====================================================== */
+   ====================================================== */
+
 #appointmentList {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(360px, 1fr)
+    );
     gap: 2rem;
 }
 
+
 /* ======================================================
    Appointment Card
-====================================================== */
+   ====================================================== */
 
 .appointment-card {
-    background: var(--surface);
+    background: var(--white);
     border-radius: var(--radius);
     padding: 2rem;
     box-shadow: var(--shadow);
-    transition: var(--transition);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
     border-left: 6px solid var(--primary);
 }
 
 .appointment-card:hover {
     transform: translateY(-6px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
 }
 
 .appointment-card h2 {
-    color: var(--primary-dark);
+    color: var(--primary);
     margin-bottom: 1rem;
 }
 
 .appointment-card p {
-    margin-bottom: .7rem;
+    margin-bottom: 0.7rem;
+    line-height: 1.5;
 }
 
 .appointment-card strong {
@@ -61,28 +71,30 @@
 }
 
 .appointment-card hr {
-    margin:1.2rem 0;
-    border:none;
-    border-top:1px solid var(--border);
+    margin: 1.2rem 0;
+    border: none;
+    border-top: 1px solid #E0E0E0;
 }
+
 
 /* ======================================================
    Appointment Status
-====================================================== */
+   ====================================================== */
 
 .status-badge {
     display: inline-block;
     margin-top: 1rem;
-    padding: .4rem 1rem;
+    padding: 0.4rem 1rem;
     background: #E3F2FD;
     color: var(--primary);
     border-radius: 50px;
     font-weight: 700;
 }
 
+
 /* ======================================================
-   Buttons
-====================================================== */
+   Appointment Buttons
+   ====================================================== */
 
 .card-actions {
     display: flex;
@@ -94,66 +106,294 @@
 .delete-btn {
     flex: 1;
     border: none;
-    padding: .85rem;
+    padding: 0.85rem;
     border-radius: 10px;
-    font-size: .95rem;
+    font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
-    transition: var(--transition);
+    transition: transform 0.2s ease,
+                opacity 0.2s ease,
+                background 0.2s ease;
 }
 
 .edit-btn {
     background: var(--primary);
-    color: white;
+    color: var(--white);
 }
 
 .edit-btn:hover {
-    background: var(--primary-dark);
+    background: #1565C0;
+    transform: translateY(-2px);
 }
 
 .delete-btn {
     background: var(--danger);
-    color: white;
+    color: var(--white);
 }
 
 .delete-btn:hover {
-    opacity: .9;
+    opacity: 0.9;
+    transform: translateY(-2px);
 }
+
 
 /* ======================================================
    Empty Dashboard
-====================================================== */
+   ====================================================== */
 
 .empty-dashboard {
     text-align: center;
     padding: 5rem 2rem;
-    background: white;
+    background: var(--white);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
 }
 
 .empty-dashboard h2 {
     margin-bottom: 1rem;
+    color: var(--text);
 }
 
 .empty-dashboard p {
     margin-bottom: 2rem;
+    color: #607D8B;
 }
 
+
 /* ======================================================
-   Responsive
-====================================================== */
+   Medical History Section
+   ====================================================== */
 
-@media (max-width:768px){
-    .dashboard{
-        padding:1rem;
+.dashboard-medical-history {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 2rem;
+}
+
+.dashboard-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #E0E0E0;
+}
+
+.dashboard-section-header h2 {
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    font-size: 2rem;
+}
+
+.dashboard-section-header p {
+    color: #607D8B;
+    margin: 0;
+}
+
+
+/* ======================================================
+   Medical History Grid
+   ====================================================== */
+
+#dashboardMedicalHistory {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(300px, 1fr)
+    );
+    gap: 1.5rem;
+}
+
+
+/* ======================================================
+   Medical History Card
+   ====================================================== */
+
+.medical-history-card {
+    background: var(--white);
+    padding: 1.75rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border-left: 5px solid var(--secondary);
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease;
+}
+
+.medical-history-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.medical-history-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.medical-history-card__header h3 {
+    margin: 0;
+    color: var(--primary);
+    font-size: 1.3rem;
+}
+
+.medical-history-card__header span {
+    white-space: nowrap;
+    color: #607D8B;
+    font-size: 0.9rem;
+}
+
+.medical-history-card p {
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+    color: #546E7A;
+}
+
+.medical-history-card strong {
+    color: var(--text);
+}
+
+
+/* ======================================================
+   Medical History Empty State
+   ====================================================== */
+
+.dashboard-medical-history .empty-state {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 3rem 2rem;
+}
+
+.dashboard-medical-history .empty-state__icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.dashboard-medical-history .empty-state h3 {
+    color: var(--text);
+    margin-bottom: 0.75rem;
+}
+
+.dashboard-medical-history .empty-state p {
+    color: #607D8B;
+    margin-bottom: 1.5rem;
+}
+
+
+/* ======================================================
+   Dashboard Primary Button
+   ====================================================== */
+
+.dashboard .btn-primary,
+.dashboard-medical-history .btn-primary {
+    display: inline-block;
+    padding: 0.8rem 1.4rem;
+    border: none;
+    border-radius: 8px;
+    background: var(--primary);
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease,
+                transform 0.2s ease;
+}
+
+.dashboard .btn-primary:hover,
+.dashboard-medical-history .btn-primary:hover {
+    background: #1565C0;
+    transform: translateY(-2px);
+}
+
+
+/* ======================================================
+   Responsive Design
+   ====================================================== */
+
+@media (max-width: 768px) {
+
+    .dashboard {
+        padding: 1rem;
+        margin: 1rem auto;
     }
 
-    #appointmentList{
-        grid-template-columns:1fr;
+    .dashboard h1 {
+        font-size: 2rem;
     }
 
-    .card-actions{
-        flex-direction:column;
+    #appointmentList {
+        grid-template-columns: 1fr;
+    }
+
+    .card-actions {
+        flex-direction: column;
+    }
+
+    .dashboard-medical-history {
+        padding: 1rem;
+        margin: 2rem auto;
+    }
+
+    .dashboard-section-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .dashboard-section-header .btn-primary {
+        width: 100%;
+        text-align: center;
+    }
+
+    #dashboardMedicalHistory {
+        grid-template-columns: 1fr;
+    }
+
+    .medical-history-card__header {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .medical-history-card__header span {
+        white-space: normal;
+    }
+}
+
+
+/* ======================================================
+   Small Mobile Devices
+   ====================================================== */
+
+@media (max-width: 480px) {
+
+    .dashboard {
+        padding: 0.75rem;
+    }
+
+    .dashboard h1 {
+        font-size: 1.7rem;
+    }
+
+    .dashboard-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .appointment-card {
+        padding: 1.25rem;
+    }
+
+    .medical-history-card {
+        padding: 1.25rem;
+    }
+
+    .dashboard-section-header h2 {
+        font-size: 1.6rem;
+    }
+
+    .edit-btn,
+    .delete-btn {
+        width: 100%;
     }
 }

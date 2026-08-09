@@ -231,6 +231,181 @@
 
 }
 
+/* =====================================================
+   Toast Notifications
+===================================================== */
+
+.toast {
+    position: fixed;
+    top: 90px;
+    right: 25px;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 280px;
+    max-width: 400px;
+    padding: 15px 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .15);
+    opacity: 0;
+    transform: translateX(120%);
+    transition:
+        opacity .3s ease,
+        transform .3s ease;
+}
+
+.toast-show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.toast-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #43A047;
+    color: white;
+    font-weight: bold;
+}
+
+.toast-message {
+    color: #37474F;
+    font-weight: 600;
+}
+
+.toast-error .toast-icon {
+    background: #EF5350;
+}
+
+/* =====================================================
+   Pharmacy Locator
+===================================================== */
+
+.pharmacy-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.pharmacy-page h1 {
+    text-align: center;
+    color: #1976D2;
+    margin-bottom: 1rem;
+}
+
+.pharmacy-intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    color: #546E7A;
+    line-height: 1.6;
+}
+
+.pharmacy-search {
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.pharmacy-search .search-input {
+    flex: 1;
+    margin: 0;
+}
+
+.pharmacy-map {
+    width: 100%;
+    height: 450px;
+    margin: 2rem 0;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid #BBDEFB;
+    box-shadow: var(--shadow);
+}
+
+.pharmacy-results {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(280px, 1fr)
+    );
+    gap: 1.5rem;
+}
+
+.pharmacy-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.25s ease;
+}
+
+.pharmacy-card:hover {
+    transform: translateY(-5px);
+}
+
+.pharmacy-card h2 {
+    color: #1976D2;
+    margin-bottom: 1rem;
+}
+
+.pharmacy-card p {
+    margin: 0.6rem 0;
+    color: #546E7A;
+}
+
+.pharmacy-card .btn-secondary {
+    margin-top: 1rem;
+}
+
+/* =====================================================
+   Nearest Pharmacy
+===================================================== */
+
+.nearest-pharmacy {
+    max-width: 900px;
+    margin: 2rem auto;
+}
+
+.nearest-pharmacy-card {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .08);
+    border-left: 6px solid #1976D2;
+}
+
+.nearest-pharmacy-badge {
+    display: inline-block;
+    margin-bottom: 1rem;
+    padding: .5rem 1rem;
+    border-radius: 20px;
+    background: #E3F2FD;
+    color: #1976D2;
+    font-weight: 700;
+}
+
+.nearest-pharmacy-card h2 {
+    margin-bottom: 1rem;
+    color: #1976D2;
+}
+
+.nearest-pharmacy-card p {
+    margin: .6rem 0;
+}
+
+.pharmacy-distance {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #2E7D32;
+    margin: 1rem 0;
+}
+
 /* ======================================================
    Footer
 ====================================================== */

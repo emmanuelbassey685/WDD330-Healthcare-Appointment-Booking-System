@@ -16,7 +16,9 @@ import "../css/dashboard.css";
 import "../css/responsive.css";
 
 import { initHospitalSearch } from "./modules/HospitalSearch.js";
+import { initNavigation } from "./modules/NavigationManager.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   initHospitalSearch();
+  initNavigation();
 });
