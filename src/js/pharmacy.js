@@ -8,6 +8,7 @@ import { initPharmacyLocator } from "./modules/PharmacyLocator.js";
 import { initNavigation } from "./modules/NavigationManager.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+    
     initPharmacyLocator();
     initNavigation();
 });

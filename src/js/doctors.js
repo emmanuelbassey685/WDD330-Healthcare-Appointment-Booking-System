@@ -19,6 +19,7 @@ import { initDoctorSearch } from "./modules/DoctorSearch.js";
 import { initNavigation } from "./modules/NavigationManager.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+  
   initDoctorSearch();
   initNavigation();
 });

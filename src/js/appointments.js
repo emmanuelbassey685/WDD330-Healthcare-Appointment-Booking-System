@@ -8,6 +8,7 @@ import { initAppointmentBooking } from "./modules/AppointmentBooking.js";
 import { initNavigation } from "./modules/NavigationManager.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+  
   initAppointmentBooking();
   initNavigation();
 });

@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     console.log("Starting Dashboard...");
 
-    initNavigation();
     initDashboard();
+    initNavigation();
 
 });

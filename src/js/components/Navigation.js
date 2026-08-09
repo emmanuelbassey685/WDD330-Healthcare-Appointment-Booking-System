@@ -2,41 +2,38 @@
  * ---------------------------------------------------------
  * File: Navigation.js
  * Description:
- * Reusable navigation component for the Healthcare
- * Appointment Booking System.
+ * Reusable responsive navigation component.
  *
  * Author: Emmanuel Bassey
- * Course: WDD330 - Web Frontend Development II
+ * Course: WDD330
  * ---------------------------------------------------------
  */
 
 export default function Navigation() {
 
     return `
-
         <header>
-
             <nav class="navbar">
 
-                <a
-                    href="/index.html"
-                    class="logo"
-                    aria-label="Healthcare Booking Home"
-                >
+                <div class="logo">
                     🏥 Healthcare Booking
-                </a>
+                </div>
 
                 <button
-                    class="menu-toggle"
                     id="menuToggle"
+                    class="menu-toggle"
                     type="button"
                     aria-label="Open navigation menu"
                     aria-expanded="false"
+                    aria-controls="navLinks"
                 >
                     ☰
                 </button>
 
-                <ul class="nav-links" id="navLinks">
+                <ul
+                    id="navLinks"
+                    class="nav-links"
+                >
 
                     <li>
                         <a href="/index.html">
@@ -74,11 +71,15 @@ export default function Navigation() {
                         </a>
                     </li>
 
+                    <li>
+                        <a href="/pages/medical-history.html">
+                            Medical History
+                        </a>
+                    </li>
+
                 </ul>
 
             </nav>
-
         </header>
-
     `;
 }

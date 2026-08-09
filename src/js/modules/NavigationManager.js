@@ -8,19 +8,25 @@
 
 export function initNavigation() {
 
-    console.log("NavigationManager loaded");
-
     const menuToggle = document.querySelector("#menuToggle");
     const navLinks = document.querySelector("#navLinks");
 
     if (!menuToggle || !navLinks) {
-        console.log("Navigation elements not found.");
+        console.warn("Navigation elements are not ready.");
         return;
     }
 
-    console.log("Navigation initialized.");
+    // Prevent duplicate event listeners
+    if (menuToggle.dataset.navigationReady === "true") {
+        return;
+    }
 
-    menuToggle.addEventListener("click", () => {
+    menuToggle.dataset.navigationReady = "true";
+
+    menuToggle.addEventListener("click", (event) => {
+
+        event.preventDefault();
+        event.stopPropagation();
 
         const isOpen =
             navLinks.classList.toggle("nav-open");
@@ -42,9 +48,8 @@ export function initNavigation() {
     });
 
 
-    const links = navLinks.querySelectorAll("a");
-
-    links.forEach((link) => {
+    // Close menu when a navigation link is clicked
+    navLinks.querySelectorAll("a").forEach((link) => {
 
         link.addEventListener("click", () => {
 
@@ -61,7 +66,6 @@ export function initNavigation() {
             );
 
             menuToggle.textContent = "☰";
-
         });
 
     });
