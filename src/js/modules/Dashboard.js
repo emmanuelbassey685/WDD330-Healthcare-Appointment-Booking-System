@@ -10,14 +10,11 @@
  */
 
 import Layout from "../components/Layout.js";
-import {
-    loadAppointments,
-    removeAppointment
-} from "./AppointmentManager.js";
-
+import { loadAppointments, removeAppointment } from "./AppointmentManager.js";
 import appointmentCardTemplate from "../components/AppointmentCard.js";
 import { showToast } from "../components/Toast.js";
 import { getMedicalHistory } from "../services/MedicalHistoryService.js";
+import { initNavigation } from "./NavigationManager.js";
 
 console.log("Dashboard.js loaded");
 
@@ -87,6 +84,8 @@ export function initDashboard() {
         </section>
 
     `);
+    // Navigation now exists in the DOM         
+    initNavigation();
 
     // Render dashboard content
     renderAppointments(appointments);

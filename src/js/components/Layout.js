@@ -1,18 +1,20 @@
 /**
- * --------------------------------------------------------
+ * ---------------------------------------------------------
  * File: Layout.js
  * Description:
  * Reusable application layout.
  *
- * --------------------------------------------------------
+ * Author: Emmanuel Bassey
+ * Course: WDD330
+ * ---------------------------------------------------------
  */
+
 import Navigation from "./Navigation.js";
 import Footer from "./Footer.js";
-import { initNavigation } from "../modules/NavigationManager.js";
 
 export default function Layout(content) {
 
-    const layout = `
+    return `
         ${Navigation()}
 
         <main class="main-content">
@@ -21,6 +23,4 @@ export default function Layout(content) {
 
         ${Footer()}
     `;
-
-    return layout;
 }
