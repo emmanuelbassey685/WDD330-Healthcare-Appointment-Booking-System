@@ -1,25 +1,221 @@
-@media (max-width:768px) {
+/* =====================================================
+   Responsive Navigation
+   Healthcare Appointment Booking System
+===================================================== */
 
-.navbar {
-    flex-direction:column;
-    gap:20px;
+@media (max-width: 768px) {
+
+    /* -------------------------------------------------
+       Navbar
+    ------------------------------------------------- */
+
+    .navbar {
+        position: relative;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        padding: 15px 20px;
+
+        gap: 0;
+
+        z-index: 1000;
+    }
+
+
+    /* -------------------------------------------------
+       Logo
+    ------------------------------------------------- */
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+
+    /* -------------------------------------------------
+       Mobile Menu Button
+    ------------------------------------------------- */
+
+    .menu-toggle {
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        width: 48px;
+        height: 48px;
+
+        padding: 0;
+
+        border: none;
+        border-radius: 8px;
+
+        background: transparent;
+        color: white;
+
+        font-size: 1.8rem;
+        line-height: 1;
+
+        cursor: pointer;
+
+        position: relative;
+        z-index: 1100;
+
+        touch-action: manipulation;
+
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .menu-toggle:focus {
+        outline: 2px solid white;
+        outline-offset: 2px;
+    }
+
+
+    /* -------------------------------------------------
+       Navigation Links - Hidden Initially
+    ------------------------------------------------- */
+
+    .nav-links {
+        display: none;
+
+        position: absolute;
+
+        top: 100%;
+        left: 0;
+        right: 0;
+
+        width: 100%;
+
+        margin: 0;
+        padding: 1rem 0;
+
+        flex-direction: column;
+
+        align-items: center;
+        text-align: center;
+
+        gap: 0;
+
+        list-style: none;
+
+        background: #1976D2;
+
+        z-index: 1000;
+
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    }
+
+
+    /* -------------------------------------------------
+       Open Mobile Menu
+    ------------------------------------------------- */
+
+    .nav-links.nav-open {
+        display: flex;
+    }
+
+
+    /* -------------------------------------------------
+       Navigation Items
+    ------------------------------------------------- */
+
+    .nav-links li {
+        width: 100%;
+    }
+
+    .nav-links a {
+        display: block;
+
+        width: 100%;
+
+        padding: 14px 20px;
+
+        color: white;
+
+        text-decoration: none;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus {
+        background: rgba(255, 255, 255, 0.12);
+    }
+
+
+    /* -------------------------------------------------
+       Hero
+    ------------------------------------------------- */
+
+    .hero {
+        padding: 50px 20px;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+
+    /* -------------------------------------------------
+       Hero Buttons
+    ------------------------------------------------- */
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    /* -------------------------------------------------
+       Cards
+    ------------------------------------------------- */
+
+    .cards {
+        padding: 25px;
+    }
+
+
+    /* -------------------------------------------------
+       Doctor Grid
+    ------------------------------------------------- */
+
+    #doctorContainer {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+
+
+    /* -------------------------------------------------
+       Search
+    ------------------------------------------------- */
+
+    #doctorSearch {
+        width: 90%;
+    }
+
+
+    /* -------------------------------------------------
+       Main Content
+    ------------------------------------------------- */
+
+    .main-content {
+        width: 100%;
+    }
+
 }
 
-.nav-links {
-    flex-direction:column;
-    text-align:center;
-}
 
-.hero h1 {
-    font-size:2rem;
-}
+/* =====================================================
+   Desktop Navigation
+===================================================== */
 
-.hero-buttons {
-    flex-direction:column;
-}
+@media (min-width: 769px) {
 
-.cards {
-    padding:25px;
-}
+    .menu-toggle {
+        display: none;
+    }
+
+    .nav-links {
+        display: flex;
+    }
 
 }

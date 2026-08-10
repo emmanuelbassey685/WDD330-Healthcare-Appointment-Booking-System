@@ -8,28 +8,40 @@
 
 export function initNavigation() {
 
+    console.log("🚀 initNavigation() STARTED");
+
     const menuToggle = document.querySelector("#menuToggle");
     const navLinks = document.querySelector("#navLinks");
 
+    console.log("☰ menuToggle:", menuToggle);
+    console.log("🔗 navLinks:", navLinks);
+
     if (!menuToggle || !navLinks) {
-        console.warn("Navigation elements are not ready.");
+        console.warn("❌ Navigation elements are not ready.");
         return;
     }
 
     // Prevent duplicate event listeners
     if (menuToggle.dataset.navigationReady === "true") {
+        console.log("⚠️ Navigation already initialized.");
         return;
     }
 
     menuToggle.dataset.navigationReady = "true";
 
+    console.log("✅ Attaching menu event listener");
+
     menuToggle.addEventListener("click", (event) => {
+
+        console.log("☰ MENU CLICK DETECTED");
 
         event.preventDefault();
         event.stopPropagation();
 
         const isOpen =
             navLinks.classList.toggle("nav-open");
+
+        console.log("Menu open:", isOpen);
 
         menuToggle.setAttribute(
             "aria-expanded",
@@ -47,8 +59,6 @@ export function initNavigation() {
             isOpen ? "✕" : "☰";
     });
 
-
-    // Close menu when a navigation link is clicked
     navLinks.querySelectorAll("a").forEach((link) => {
 
         link.addEventListener("click", () => {
@@ -69,5 +79,4 @@ export function initNavigation() {
         });
 
     });
-
 }
