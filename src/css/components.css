@@ -124,6 +124,7 @@
     transition: var(--transition);
     display: flex;
     flex-direction: column;
+    padding: 1.5rem;
 }
 
 .doctor-card:hover,
@@ -136,6 +137,8 @@
     width: 100%;
     height: 230px;
     object-fit: cover;
+    object-position: center;
+    display: block;
 }
 
 .doctor-content,
