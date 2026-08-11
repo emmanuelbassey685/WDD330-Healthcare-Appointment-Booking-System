@@ -14,6 +14,7 @@ import { getDoctors } from "../services/FHIRService.js";
 import { getHospitals } from "../services/HospitalService.js";
 import { createAppointment, editAppointment, loadAppointment } from "./AppointmentManager.js";
 import { showToast } from "../components/Toast.js";
+import { sendAppointmentConfirmation } from "../services/EmailService.js";
 
 const editingId = localStorage.getItem("editingAppointment");
 
@@ -80,49 +81,87 @@ async function populateHospitals() {
 
 }
 
-function saveAppointmentForm(event) {
+async function saveAppointmentForm(event) {
 
     event.preventDefault();
 
     const appointment = {
 
-        patientName: document.querySelector("#patientName").value,
-        patientEmail: document.querySelector("#patientEmail").value,
-        patientPhone: document.querySelector("#patientPhone").value,
+        patientName:
+            document.querySelector("#patientName").value,
 
-        doctor: document.querySelector("#doctorSelect").value,
-        hospital: document.querySelector("#hospitalSelect").value,
+        patientEmail:
+            document.querySelector("#patientEmail").value,
 
-        date: document.querySelector("#appointmentDate").value,
-        time: document.querySelector("#appointmentTime").value,
+        patientPhone:
+            document.querySelector("#patientPhone").value,
 
-        reason: document.querySelector("#reason").value
+        doctor:
+            document.querySelector("#doctorSelect").value,
+
+        hospital:
+            document.querySelector("#hospitalSelect").value,
+
+        date:
+            document.querySelector("#appointmentDate").value,
+
+        time:
+            document.querySelector("#appointmentTime").value,
+
+        reason:
+            document.querySelector("#reason").value
 
     };
 
-    if (editingId) {
+    try {
 
-        editAppointment(editingId, appointment);
+        if (editingId) {
 
-        localStorage.removeItem("editingAppointment");
+            editAppointment(editingId, appointment);
+            /*
+             * Send an email after the appointment
+             * has been successfully updated.
+             */
 
-        sessionStorage.setItem(
-            "toastMessage",
-            "Appointment updated successfully!"
+            await sendAppointmentConfirmation(appointment);
+
+            localStorage.removeItem("editingAppointment");
+
+            sessionStorage.setItem(
+                "toastMessage",
+                "Appointment updated successfully!"
+            );
+
+        } else {
+
+            createAppointment(appointment);
+
+            /*
+             * Send confirmation after booking.
+             */
+
+            await sendAppointmentConfirmation(appointment);
+
+            sessionStorage.setItem("toastMessage", "Appointment booked successfully!");
+
+        }
+
+        window.location.href = "/pages/dashboard.html";
+
+    } catch (error) {
+
+        console.error("Appointment email error:", error);
+
+        showToast(
+            "Appointment was saved, but the email notification could not be sent.",
+            "error"
         );
 
-    } else {
-
-        createAppointment(appointment);
-
-        sessionStorage.setItem(
-            "toastMessage",
-            "Appointment booked successfully!"
-        );
-
+        /*
+         * We don't redirect here so the user can see
+         * the error and try again.
+         */
     }
-
-    window.location.href = "/pages/dashboard.html";
 }
 
 function attachFormListener() {
