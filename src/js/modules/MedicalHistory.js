@@ -1,12 +1,12 @@
 /**
- * ----------------------------------------------------
+ * ------------------------------------------------------
  * File: MedicalHistory.js
  * Description:
  * Handles the Medical History page.
  *
  * Author: Emmanuel Bassey
- * Course: WDD330
- * ----------------------------------------------------
+ * Course: WDD330 - Web Frontend Development II
+ * ------------------------------------------------------
  */
 
 import Layout from "../components/Layout.js";
@@ -20,7 +20,9 @@ import medicalHistoryCardTemplate
 import {
     getMedicalHistory,
     saveMedicalHistory,
-    deleteMedicalHistory
+    deleteMedicalHistory,
+    getMedicalHistoryById,
+    updateMedicalHistory
 } from "../services/MedicalHistoryService.js";
 
 
@@ -29,8 +31,7 @@ import {
  */
 export function initMedicalHistory() {
 
-    const app =
-        document.querySelector("#app");
+    const app = document.querySelector("#app");
 
     app.innerHTML = Layout(`
 
@@ -48,7 +49,7 @@ export function initMedicalHistory() {
 
             <div class="medical-history-form-container">
 
-                <h2>
+                <h2 id="medicalFormTitle">
                     Add Medical Record
                 </h2>
 
@@ -79,6 +80,7 @@ export function initMedicalHistory() {
 
     attachDeleteListeners();
 
+    attachEditListeners();
 }
 
 
@@ -87,13 +89,11 @@ export function initMedicalHistory() {
  */
 function renderMedicalHistory() {
 
-    const list =
-        document.querySelector(
-            "#medicalHistoryList"
-        );
+    const list = document.querySelector(
+        "#medicalHistoryList"
+    );
 
-    const records =
-        getMedicalHistory();
+    const records = getMedicalHistory();
 
     if (records.length === 0) {
 
@@ -119,7 +119,6 @@ function renderMedicalHistory() {
         `;
 
         return;
-
     }
 
     list.innerHTML = records
@@ -134,10 +133,9 @@ function renderMedicalHistory() {
  */
 function attachFormListener() {
 
-    const form =
-        document.querySelector(
-            "#medicalHistoryForm"
-        );
+    const form = document.querySelector(
+        "#medicalHistoryForm"
+    );
 
     form.addEventListener(
         "submit",
@@ -148,48 +146,99 @@ function attachFormListener() {
 
 
 /**
- * Save medical record.
+ * Save or update medical record.
  */
 function saveMedicalRecord(event) {
 
     event.preventDefault();
 
+    const form = event.target;
+
+    const editingId = form.dataset.editingId;
+
     const record = {
 
-        date:
-            document.querySelector(
-                "#recordDate"
-            ).value,
+        date: document.querySelector(
+            "#recordDate"
+        ).value,
 
-        condition:
-            document.querySelector(
-                "#condition"
-            ).value,
+        condition: document.querySelector(
+            "#condition"
+        ).value,
 
-        doctorName:
-            document.querySelector(
-                "#doctorName"
-            ).value,
+        doctorName: document.querySelector(
+            "#doctorName"
+        ).value,
 
-        treatment:
-            document.querySelector(
-                "#treatment"
-            ).value,
+        treatment: document.querySelector(
+            "#treatment"
+        ).value,
 
-        medicalNotes:
-            document.querySelector(
-                "#medicalNotes"
-            ).value
+        medicalNotes: document.querySelector(
+            "#medicalNotes"
+        ).value
 
     };
 
-    saveMedicalHistory(record);
 
-    event.target.reset();
+    /*
+     * If editingId exists,
+     * update the existing record.
+     */
+    if (editingId) {
 
+        updateMedicalHistory(
+            editingId,
+            record
+        );
+
+    } else {
+
+        /*
+         * Otherwise create a new record.
+         */
+        saveMedicalHistory(record);
+
+    }
+
+
+    /*
+     * Reset the form.
+     */
+    form.reset();
+
+    delete form.dataset.editingId;
+
+
+    /*
+     * Restore Add mode.
+     */
+    const formTitle =
+        document.querySelector(
+            "#medicalFormTitle"
+        );
+
+    formTitle.textContent =
+        "Add Medical Record";
+
+
+    const submitButton =
+        form.querySelector(
+            'button[type="submit"]'
+        );
+
+    submitButton.textContent =
+        "Add Medical Record";
+
+
+    /*
+     * Refresh records.
+     */
     renderMedicalHistory();
 
     attachDeleteListeners();
+
+    attachEditListeners();
 
 }
 
@@ -204,6 +253,7 @@ function attachDeleteListeners() {
             ".medical-history-card .delete-btn"
         );
 
+
     buttons.forEach((button) => {
 
         button.addEventListener(
@@ -215,21 +265,153 @@ function attachDeleteListeners() {
                         "Are you sure you want to delete this medical record?"
                     );
 
+
                 if (!confirmed) {
                     return;
                 }
+
 
                 deleteMedicalHistory(
                     button.dataset.id
                 );
 
+
                 renderMedicalHistory();
 
                 attachDeleteListeners();
 
+                attachEditListeners();
+
             }
         );
 
+    });
+
+}
+
+
+/**
+ * Attach edit buttons.
+ */
+function attachEditListeners() {
+
+    const buttons =
+        document.querySelectorAll(
+            ".medical-history-card .edit-medical-btn"
+        );
+
+
+    buttons.forEach((button) => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                editMedicalRecord(
+                    button.dataset.id
+                );
+
+            }
+        );
+
+    });
+
+}
+
+
+/**
+ * Load an existing medical record
+ * into the form for editing.
+ */
+function editMedicalRecord(id) {
+
+    const record =
+        getMedicalHistoryById(id);
+
+
+    if (!record) {
+
+        alert(
+            "Unable to find the selected medical record."
+        );
+
+        return;
+    }
+
+
+    /*
+     * Populate form fields.
+     */
+    document.querySelector(
+        "#recordDate"
+    ).value = record.date || "";
+
+
+    document.querySelector(
+        "#condition"
+    ).value = record.condition || "";
+
+
+    document.querySelector(
+        "#doctorName"
+    ).value = record.doctorName || "";
+
+
+    document.querySelector(
+        "#treatment"
+    ).value = record.treatment || "";
+
+
+    document.querySelector(
+        "#medicalNotes"
+    ).value = record.medicalNotes || "";
+
+
+    /*
+     * Store the ID of the record
+     * currently being edited.
+     */
+    const form =
+        document.querySelector(
+            "#medicalHistoryForm"
+        );
+
+    form.dataset.editingId =
+        record.id;
+
+
+    /*
+     * Change form heading.
+     */
+    const formTitle =
+        document.querySelector(
+            "#medicalFormTitle"
+        );
+
+    formTitle.textContent =
+        "Edit Medical Record";
+
+
+    /*
+     * Change submit button.
+     */
+    const submitButton =
+        form.querySelector(
+            'button[type="submit"]'
+        );
+
+    submitButton.textContent =
+        "Update Medical Record";
+
+
+    /*
+     * Scroll back to the form.
+     */
+    document.querySelector(
+        ".medical-history-form-container"
+    ).scrollIntoView({
+        behavior: "smooth",
+        block: "start"
     });
 
 }
